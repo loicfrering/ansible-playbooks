@@ -19,6 +19,11 @@ Compatibility
 * Debian
 * Ubuntu
 
+TODO
+----
+
+* [ ] Add tasks to install oh-my-zsh.
+
 License
 -------
 
