@@ -1,0 +1,19 @@
+---
+
+- name: Clone dotfiles
+  git: repo=https://github.com/loicfrering/dotfiles.git
+       dest={{ ansible_env.HOME }}/Projects/dotfiles
+
+- name: Link Zsh, Git, Vim and tmux configurations
+  file: src={{ ansible_env.HOME }}/Projects/dotfiles/{{ item }}
+        dest={{ ansible_env.HOME }}/{{ item }}
+        state=link
+  with_items:
+    - .zshrc
+    - .gitconfig
+    - .vim
+    - .vimrc
+    - .tmux.conf
+
+- name: Install Vim plugins with Vundle
+  shell: echo | vim +BundleInstall +qall

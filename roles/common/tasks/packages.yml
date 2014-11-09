@@ -1,0 +1,14 @@
+---
+
+- name: Update apt cache
+  sudo: yes
+  apt: update_cache=yes
+
+- name: Install Zsh, Git, Vim and tmux
+  sudo: yes
+  apt: name={{ item }}
+  with_items:
+    - zsh
+    - git
+    - vim
+    - tmux
