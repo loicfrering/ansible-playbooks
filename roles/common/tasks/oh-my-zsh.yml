@@ -1,3 +1,12 @@
 ---
 
+- name: Clone oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git
+       dest={{ ansible_env.HOME }}/.oh-my-zsh
 
+- name: Copy .zshrc from the template
+  command: cp {{ ansible_env.HOME }}/.oh-my-zsh/templates/zshrc.zsh-template {{ ansible_env.HOME }}/.zshrc
+
+- name: Set Zsh as the default shell
+  sudo: yes
+  user: name={{ ansible_env.USER }} shell=/bin/zsh
